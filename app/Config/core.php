@@ -82,11 +82,11 @@ function parseUrlFromEnv($key, $default = null) {
  *
  * @see ErrorHandler for more information on error handling and configuration.
  */
-	Configure::write('Error', [
+	Configure::write('Error', array(
 		'handler' => 'ErrorHandler::handleError',
 		'level' => E_ALL & ~E_DEPRECATED,
 		'trace' => true
-	]);
+	));
 
 /**
  * Configure the Exception handler used for uncaught exceptions. By default,
@@ -105,11 +105,11 @@ function parseUrlFromEnv($key, $default = null) {
  *
  * @see ErrorHandler for more information on exception handling and configuration.
  */
-	Configure::write('Exception', [
+	Configure::write('Exception', array(
 		'handler' => 'ErrorHandler::handleException',
 		'renderer' => 'ExceptionRenderer',
 		'log' => true
-	]);
+	));
 
 /**
  * Application wide charset encoding
@@ -219,9 +219,9 @@ function parseUrlFromEnv($key, $default = null) {
  * the cake shell command: cake schema create Sessions
  *
  */
-	Configure::write('Session', [
+	Configure::write('Session', array(
 		'defaults' => 'php'
-	]);
+	));
 
 /**
  * A random string used in security hashing methods.
@@ -361,7 +361,7 @@ $prefix = env('CACHE_PREFIX') ?: 'myapp_';
  */
 $_CACHE_URL = parseUrlFromEnv('CAKE_CORE_CACHE_URL', env('CACHE_URL') ?: 'file:');
 if ($_CACHE_URL) {
-	Cache::config('_cake_core_', [
+	Cache::config('_cake_core_', array(
 		'engine' => ucfirst(Hash::get($_CACHE_URL, 'scheme')),
 		'prefix' => $prefix . 'cake_core_',
 		'path' => CACHE . 'persistent' . DS,
@@ -372,7 +372,7 @@ if ($_CACHE_URL) {
 		'server' => Hash::get($_CACHE_URL, 'host'),
 		'servers' => Hash::get($_CACHE_URL, 'host'),
 		'port' => Hash::get($_CACHE_URL, 'port'),
-	]);
+	));
 }
 
 /**
@@ -381,7 +381,7 @@ if ($_CACHE_URL) {
  */
 $_CACHE_URL = parseUrlFromEnv('CAKE_MODEL_CACHE_URL', env('CACHE_URL') ?: 'file:');
 if ($_CACHE_URL) {
-	Cache::config('_cake_model_', [
+	Cache::config('_cake_model_', array(
 		'engine' => ucfirst(Hash::get($_CACHE_URL, 'scheme')),
 		'prefix' => $prefix . 'cake_model_',
 		'path' => CACHE . 'models' . DS,
@@ -392,5 +392,5 @@ if ($_CACHE_URL) {
 		'server' => Hash::get($_CACHE_URL, 'host'),
 		'servers' => Hash::get($_CACHE_URL, 'host'),
 		'port' => Hash::get($_CACHE_URL, 'port'),
-	]);
+	));
 }

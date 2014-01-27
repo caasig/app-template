@@ -45,6 +45,6 @@ class AppModel extends Model {
  *
  * @var array
  */
-	public $actsAs = ['Containable'];
+	public $actsAs = array('Containable');
 	
 }

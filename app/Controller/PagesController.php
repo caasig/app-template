@@ -43,7 +43,7 @@ class PagesController extends AppController {
  *
  * @var array
  */
-	public $uses = [];
+	public $uses = array();
 
 /**
  * Displays a view

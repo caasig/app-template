@@ -25,10 +25,10 @@
  */
 
 App::build(
-	[
-		'Plugin' => [ROOT . '/Plugin/', ROOT . '/app/Plugin/'],
-		'Vendor' => [ROOT . '/vendor/', ROOT . '/app/Vendor/']
-	],
+	array(
+		'Plugin' => array(ROOT . '/Plugin/', ROOT . '/app/Plugin/'),
+		'Vendor' => array(ROOT . '/vendor/', ROOT . '/app/Vendor/')
+	),
 	App::RESET
 );
 
@@ -104,11 +104,11 @@ if (php_sapi_name() !== 'cli' && Configure::read('debug') && in_array('DebugKit'
 
 		$controller->Toolbar = $controller->Components->load(
 			'DebugKit.Toolbar',
-			[
-				'panels' => [
+			array(
+				'panels' => array(
 					'Crud.Crud'
-				]
-			]
+				)
+			)
 		);
 		$controller->Crud->addListener('DebugKit', 'Crud.DebugKit');
 	}, 'Controller.initialize');
@@ -130,24 +130,24 @@ if (php_sapi_name() !== 'cli' && Configure::read('debug') && in_array('DebugKit'
  *
  * ));
  */
-Configure::write('Dispatcher.filters', [
+Configure::write('Dispatcher.filters', array(
 	'AssetDispatcher',
 	'CacheDispatcher'
-]);
+));
 
 /**
  * Configures default file logging options
  */
 App::uses('CakeLog', 'Log');
-CakeLog::config('debug', [
+CakeLog::config('debug', array(
 	'engine' => 'FileLog',
-	'types' => ['notice', 'info', 'debug'],
+	'types' => array('notice', 'info', 'debug'),
 	'path' =>  env('LOG_PATH') ?: LOGS,
 	'file' => 'debug',
-]);
-CakeLog::config('error', [
+));
+CakeLog::config('error', array(
 	'engine' => 'FileLog',
-	'types' => ['warning', 'error', 'critical', 'alert', 'emergency'],
+	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'path' =>  env('LOG_PATH') ?: LOGS,
 	'file' => 'error',
-]);
+));
